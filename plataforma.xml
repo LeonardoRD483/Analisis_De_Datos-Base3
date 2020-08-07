@@ -1,0 +1,78 @@
+<Schema name="Plataforma">
+  <Cube name="Visitas" visible="true" cache="true" enabled="true">
+    <Table name="tbl_hecho" schema="public">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_dim_user" highCardinality="false" name="Usuarios">
+      <Hierarchy name="Usuario" visible="true" hasAll="true" primaryKey="id_usuario">
+        <Table name="dim_user" schema="public">
+        </Table>
+        <Level name="Nombre_usuario" visible="true" column="nombre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_dim_curso" highCardinality="false" name="Cursos">
+      <Hierarchy name="Curso" visible="true" hasAll="true" primaryKey="id_curso">
+        <Table name="dim_curso" schema="public">
+        </Table>
+        <Level name="Nombre_curso" visible="true" column="nombre_curso" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_dim_accion" highCardinality="false" name="Acciones">
+      <Hierarchy name="Accion" visible="true" hasAll="true" primaryKey="id_accion">
+        <Table name="dim_accion" schema="public">
+        </Table>
+        <Level name="Action" visible="true" column="action" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Target" visible="true" column="target" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_dim_ubicacion" highCardinality="false" name="Ubicaciones">
+      <Hierarchy name="Ubicacion" visible="true" hasAll="true" primaryKey="id_ubicacion">
+        <Table name="dim_ubicacion" schema="public">
+        </Table>
+        <Level name="ip" visible="true" column="ip" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="ip_a" visible="true" column="ip_a" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="ip_b" visible="true" column="ip_b" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="ip_c" visible="true" column="ip_c" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="ip_d" visible="true" column="ip_b" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_dim_acceso" highCardinality="false" name="Accesos">
+      <Hierarchy name="Acceso" visible="true" hasAll="true" primaryKey="id_acceso">
+        <Table name="dim_acceso" schema="public">
+        </Table>
+        <Level name="Origin" visible="true" column="origin" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_dim_tiempo" highCardinality="false" name="Tiempos">
+      <Hierarchy name="Tiempo" visible="true" hasAll="true" primaryKey="id_tiempo">
+        <Table name="dim_tiempo" schema="public">
+        </Table>
+        <Level name="a&#241;o" visible="true" column="anio" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="mes" visible="true" column="mes" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="dia_semana" visible="true" column="dia_semana" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="periodo" visible="true" column="periodo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="hora" visible="true" column="hora" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="minuto" visible="true" column="minuto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="visitas" column="cantidad_accesos" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="acciones" column="cantidad_acciones" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
